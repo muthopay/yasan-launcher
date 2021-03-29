@@ -23,6 +23,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions 'visibility'
+    productFlavors {
+        close {
+            dimension 'visibility'
+            versionNameSuffix "-C"
+        }
+        open {
+            dimension 'visibility'
+            versionNameSuffix "-O"
+            applicationIdSuffix ".open"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
