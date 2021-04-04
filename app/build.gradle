@@ -29,7 +29,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions 'visibility'
+    flavorDimensions 'visibility', 'development-mode'
     productFlavors {
         close {
             dimension 'visibility'
@@ -37,8 +37,16 @@ android {
         }
         open {
             dimension 'visibility'
-            versionNameSuffix "-O"
+            versionNameSuffix "-open"
             applicationIdSuffix ".open"
+        }
+        user {
+            dimension 'development-mode'
+        }
+        dev {
+            dimension 'development-mode'
+            versionNameSuffix "-dev"
+            applicationIdSuffix(".dev")
         }
     }
     compileOptions {
@@ -72,4 +80,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+
 }
