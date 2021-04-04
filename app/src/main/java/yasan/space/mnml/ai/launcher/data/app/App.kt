@@ -9,9 +9,9 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import dev.yasan.helper.library.closeKeyboard
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import yasan.space.mnml.ai.launcher.MainActivity
 
 @Entity(tableName = "apps")
 @Parcelize
@@ -31,7 +31,7 @@ data class App(val label: String, val appPackageName: String, val appClassName: 
      *
      * @return If launch was successful or not.
      */
-    fun launch(activity: MainActivity): Boolean {
+    fun launch(activity: Activity): Boolean {
         return try {
             activity.closeKeyboard()
             val intent = Intent(Intent.ACTION_MAIN)

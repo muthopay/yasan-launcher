@@ -1,7 +1,6 @@
 package yasan.space.mnml.ai.launcher
 
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
@@ -23,19 +22,6 @@ class MainActivity : ComponentActivity() {
                     Greeting("Android")
                 }
             }
-        }
-    }
-
-    fun closeKeyboard() {
-        try {
-            val inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-
-            inputManager.hideSoftInputFromWindow(
-                currentFocus!!.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
-            )
-        } catch (e: NullPointerException) {
-            e.printStackTrace()
         }
     }
 }
