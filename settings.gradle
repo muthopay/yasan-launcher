@@ -7,5 +7,5 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "YASAN Launcher O"
+rootProject.name = "YASAN Launcher"
 include ':app'
