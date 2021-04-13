@@ -1,5 +1,6 @@
 package yasan.space.mnml.ai.launcher.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -10,13 +11,14 @@ import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.ui.home.Home
 import yasan.space.mnml.ai.launcher.ui.theme.YASANLauncherTheme
 
+@ExperimentalFoundationApi
 @Composable
 fun YasanLauncher(viewModel: MainViewModel, activity: MainActivity) {
 
     val apps = viewModel.apps.observeAsState()
 
     YASANLauncherTheme {
-        Surface(color = Color.Blue, modifier = Modifier.fillMaxSize()) {
+        Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
             Home(apps, activity)
         }
     }
