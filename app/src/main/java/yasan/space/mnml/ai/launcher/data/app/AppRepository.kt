@@ -11,7 +11,7 @@ interface AppRepository {
 
     suspend fun getAppsFromPackageManager(context: Context): ArrayList<App>
 
-    suspend fun updateRoomAppsUsingPackageManager(context: Context)
+    suspend fun updateRoomAppsUsingPackageManager(context: Context): ArrayList<App>
 
     suspend fun insertAppListIntoRoom(list: ArrayList<App>)
 

@@ -1,7 +1,6 @@
 package yasan.space.mnml.ai.launcher.ui
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,13 +24,11 @@ class MainViewModel @Inject constructor(
     private var _apps = MutableLiveData<List<App>>()
     val apps: LiveData<List<App>> get() = _apps
 
-    fun loadApps() {
-        Log.d(TAG, "loadApps: start")
+    fun updateApps() {
         viewModelScope.launch(dispatchers.io) {
-            val a: List<App> = appRepository.getAppsFromPackageManager(getApplication())
+            val a: ArrayList<App> = appRepository.updateRoomAppsUsingPackageManager(getApplication())
             _apps.postValue(a)
         }
-        Log.d(TAG, "loadApps: finish")
     }
 
 }

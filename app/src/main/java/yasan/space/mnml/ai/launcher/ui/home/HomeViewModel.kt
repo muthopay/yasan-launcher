@@ -40,12 +40,9 @@ class HomeViewModel @Inject constructor(
                 val sortedApps = sortAppsByScore(apps)
 
                 if (apps.size > HOME_SIZE) {
-                    repeat(HOME_SIZE) {
-                        newHomeApps.add(apps[it])
-                    }
-                } else {
-                    newHomeApps.addAll(sortedApps)
+                    apps.slice(0 until HOME_SIZE)
                 }
+                newHomeApps.addAll(sortedApps)
 
                 Log.d(TAG, "loadHomeApps: (${newHomeApps.size}) $newHomeApps")
 

@@ -89,7 +89,7 @@ data class App(val label: String, val appPackageName: String, val appClassName: 
         return drawable
     }
 
-    override fun toString() = "label (s:$score)"
+    override fun toString() = "$label (s:$score)"
 
     override fun equals(other: Any?): Boolean {
 

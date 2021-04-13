@@ -22,8 +22,12 @@ class MainActivity : ComponentActivity() {
             YasanLauncher(viewModel, this)
         }
 
-        viewModel.loadApps()
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.updateApps()
     }
 
 }

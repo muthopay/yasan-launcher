@@ -6,9 +6,6 @@ import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import yasan.space.mnml.ai.launcher.data.settings.SettingsRepository
 import yasan.space.mnml.ai.launcher.util.makeSearchReady
 import javax.inject.Inject
@@ -43,18 +40,17 @@ class DefaultAppRepository @Inject constructor(
         return apps
     }
 
-    override suspend fun updateRoomAppsUsingPackageManager(context: Context) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val dao = db.appDao()
-            val packageManagerApps = getAppsFromPackageManager(context)
-            val roomApps = getAppsFromRoom()
+    override suspend fun updateRoomAppsUsingPackageManager(context: Context): ArrayList<App> {
+        val dao = db.appDao()
+        val packageManagerApps = getAppsFromPackageManager(context)
+        val roomApps = getAppsFromRoom()
 
-            if (roomApps.isEmpty()) insertAppListIntoRoom(packageManagerApps)
-            else {
-                for (ra in roomApps) if (!packageManagerApps.contains(ra)) dao.delete(ra) // Delete app from Room if its not in package manager apps
-                insertAppListIntoRoom(packageManagerApps)
-            }
+        if (roomApps.isEmpty()) insertAppListIntoRoom(packageManagerApps)
+        else {
+            for (ra in roomApps) if (!packageManagerApps.contains(ra)) dao.delete(ra) // Delete app from Room if its not in package manager apps
+            insertAppListIntoRoom(packageManagerApps)
         }
+        return packageManagerApps
     }
 
     override suspend fun insertAppListIntoRoom(list: ArrayList<App>) {
