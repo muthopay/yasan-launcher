@@ -12,6 +12,7 @@ import androidx.room.PrimaryKey
 import dev.yasan.helper.library.closeKeyboard
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
+import yasan.space.mnml.ai.launcher.shared.AI
 
 @Entity(tableName = "apps")
 @Parcelize
@@ -21,6 +22,17 @@ data class App(val label: String, val appPackageName: String, val appClassName: 
     companion object {
         private const val TAG = "App"
     }
+
+    /**
+     * Returns app's AI score. The higher the better.
+     */
+    fun loadScore(context: Context): Int {
+        score = AI.getAppScore(this, context)
+        return score
+    }
+
+    @IgnoredOnParcel
+    var score: Int = 0
 
     @IgnoredOnParcel
     @PrimaryKey(autoGenerate = false)
@@ -38,6 +50,7 @@ data class App(val label: String, val appPackageName: String, val appClassName: 
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.setClassName(appPackageName, appClassName)
             activity.startActivity(intent)
+            AI.recordAppLaunch(this, activity)
             true
         } catch (e: Exception) {
             e.printStackTrace()
@@ -76,7 +89,7 @@ data class App(val label: String, val appPackageName: String, val appClassName: 
         return drawable
     }
 
-    override fun toString() = label
+    override fun toString() = "label (s:$score)"
 
     override fun equals(other: Any?): Boolean {
 

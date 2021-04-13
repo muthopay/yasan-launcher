@@ -3,7 +3,6 @@ package yasan.space.mnml.ai.launcher.data.settings
 import android.content.SharedPreferences
 import javax.inject.Inject
 
-
 class DefaultSettingsRepository @Inject constructor(
     private val sp: SharedPreferences
 ) : SettingsRepository {
