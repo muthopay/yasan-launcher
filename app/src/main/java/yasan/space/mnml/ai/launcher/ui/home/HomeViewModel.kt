@@ -26,28 +26,26 @@ class HomeViewModel @Inject constructor(
     private var _homeApps = MutableLiveData<List<App>>()
     val homeApps: LiveData<List<App>> get() = _homeApps
 
-    fun loadHomeApps(apps: List<App>?) {
-        when {
-            apps == null -> {
+    fun loadHomeApps(apps: List<App>?) = when {
+        apps == null -> {
+        }
+        apps.isEmpty() -> {
+            _homeApps.postValue(apps!!)
+        }
+        else -> {
+            apps as ArrayList
+
+            val newHomeApps = ArrayList<App>()
+            var sortedApps = sortAppsByScore(apps)
+
+            if (apps.size > HOME_SIZE) {
+                sortedApps = sortedApps.slice(0 until HOME_SIZE) as ArrayList
             }
-            apps.isEmpty() -> {
-                _homeApps.postValue(apps!!)
-            }
-            else -> {
-                apps as ArrayList
+            newHomeApps.addAll(sortedApps)
 
-                val newHomeApps = ArrayList<App>()
-                val sortedApps = sortAppsByScore(apps)
+            Log.d(TAG, "loadHomeApps: (${newHomeApps.size}) $newHomeApps")
 
-                if (apps.size > HOME_SIZE) {
-                    apps.slice(0 until HOME_SIZE)
-                }
-                newHomeApps.addAll(sortedApps)
-
-                Log.d(TAG, "loadHomeApps: (${newHomeApps.size}) $newHomeApps")
-
-                _homeApps.postValue(newHomeApps)
-            }
+            _homeApps.postValue(newHomeApps)
         }
     }
 
