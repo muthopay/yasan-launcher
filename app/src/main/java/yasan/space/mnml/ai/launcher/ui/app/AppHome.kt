@@ -26,8 +26,8 @@ fun AppHome(
         painter = AndroidDrawablePainterAlt(drawable.mutate()),
         contentDescription = app.label,
         modifier = Modifier
-            .width(64.dp)
-            .height(64.dp)
+            .requiredWidth(64.dp)
+            .requiredHeight(64.dp)
             .background(Color.Green)
             .clickable {
                 app.launch(activity)
