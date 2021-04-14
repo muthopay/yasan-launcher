@@ -15,11 +15,13 @@ import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.data.app.App
 import yasan.space.mnml.ai.launcher.ui.app.AppHome
+import yasan.space.mnml.ai.launcher.ui.theme.appBoxSize
+import yasan.space.mnml.ai.launcher.ui.theme.divider
+import yasan.space.mnml.ai.launcher.ui.theme.grid
 
 @ExperimentalFoundationApi
 @Composable
@@ -29,7 +31,7 @@ fun AppBox(apps: State<List<App>?>, activity: MainActivity) {
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.layer_foreground))
-            .border(2.dp, colorResource(id = R.color.divider))
+            .border(divider, colorResource(id = R.color.divider))
     ) {
         when {
             list == null -> {
@@ -42,9 +44,9 @@ fun AppBox(apps: State<List<App>?>, activity: MainActivity) {
                 LazyVerticalGrid(
                     cells = GridCells.Fixed(3),
                     modifier = Modifier
-                        .padding(8.dp)
-                        .width(192.dp)
-                        .height(192.dp)
+                        .padding(grid)
+                        .width(appBoxSize)
+                        .height(appBoxSize)
                 ) {
                     items(count = list.size) {
                         AppHome(app = list[it], activity = activity)
@@ -53,6 +55,5 @@ fun AppBox(apps: State<List<App>?>, activity: MainActivity) {
             }
         }
     }
-
 
 }

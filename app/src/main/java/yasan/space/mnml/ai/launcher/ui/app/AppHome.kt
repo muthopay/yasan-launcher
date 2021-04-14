@@ -9,9 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.data.app.App
+import yasan.space.mnml.ai.launcher.ui.theme.appHomeSize
+import yasan.space.mnml.ai.launcher.ui.theme.grid
 import yasan.space.mnml.ai.launcher.util.AndroidDrawablePainterAlt
 
 @Composable
@@ -24,12 +25,12 @@ fun AppHome(
         painter = AndroidDrawablePainterAlt(drawable.mutate()),
         contentDescription = app.label,
         modifier = Modifier
-            .requiredWidth(64.dp)
-            .requiredHeight(64.dp)
+            .requiredWidth(appHomeSize)
+            .requiredHeight(appHomeSize)
             .clickable {
                 app.launch(activity)
             }
-            .padding(12.dp),
+            .padding(grid(1.5f)),
         alignment = Alignment.Center,
         contentScale = ContentScale.Fit
     )
