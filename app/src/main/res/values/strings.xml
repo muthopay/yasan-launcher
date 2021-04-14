@@ -2,4 +2,5 @@
     <string name="app_name">YASAN Launcher</string>
     <string name="apps_loading">Loading apps</string>
     <string name="apps_none_found">No apps found</string>
+    <string name="home">Home</string>
 </resources>
