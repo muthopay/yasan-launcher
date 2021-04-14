@@ -5,6 +5,7 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="yasan_blue_light">#FF5bdfe6</color>
     <color name="yasan_blue">#FF00ADB4</color>
@@ -23,5 +24,7 @@
 
     <color name="text_title">#212121</color>
     <color name="text_desc">#666666</color>
+
+    <color name="default_home_background">#FFFFFFFF</color>
 
 </resources>

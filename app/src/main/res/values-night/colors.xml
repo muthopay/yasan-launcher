@@ -10,4 +10,6 @@
     <color name="text_title">#E0E0E0</color>
     <color name="text_desc">#A0A0A0</color>
 
+    <color name="default_home_background">#FF000000</color>
+
 </resources>
