@@ -12,8 +12,6 @@ import yasan.space.mnml.ai.launcher.data.app.AppRepository
 import yasan.space.mnml.ai.launcher.util.DispatcherProvider
 import javax.inject.Inject
 
-private const val TAG = "MainViewModel"
-
 @HiltViewModel
 class MainViewModel @Inject constructor(
     application: Application,
@@ -26,7 +24,8 @@ class MainViewModel @Inject constructor(
 
     fun updateApps() {
         viewModelScope.launch(dispatchers.io) {
-            val a: ArrayList<App> = appRepository.updateRoomAppsUsingPackageManager(getApplication())
+            val a: ArrayList<App> =
+                appRepository.updateRoomAppsUsingPackageManager(getApplication())
             _apps.postValue(a)
         }
     }

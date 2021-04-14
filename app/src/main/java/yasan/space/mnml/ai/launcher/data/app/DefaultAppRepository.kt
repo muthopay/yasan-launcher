@@ -7,7 +7,7 @@ import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import androidx.lifecycle.LiveData
 import yasan.space.mnml.ai.launcher.data.settings.SettingsRepository
-import yasan.space.mnml.ai.launcher.util.makeSearchReady
+import yasan.space.mnml.ai.launcher.util.removeSpaces
 import javax.inject.Inject
 
 class DefaultAppRepository @Inject constructor(
@@ -63,10 +63,10 @@ class DefaultAppRepository @Inject constructor(
 
         val filteredApps = ArrayList<App>()
 
-        val search = searched.makeSearchReady()
+        val search = searched.removeSpaces()
 
         for (app in apps) {
-            val label = app.label.makeSearchReady()
+            val label = app.label.removeSpaces()
 
             if (settingsRepo.settingSearchPackageNames) {
                 if (label.contains(search) || app.appPackageName.contains(search)) filteredApps.add(
@@ -81,7 +81,7 @@ class DefaultAppRepository @Inject constructor(
         if (filteredApps.isNotEmpty() || !settingsRepo.settingSearchFixTypos) return filteredApps
 
         for (app in apps) {
-            val label = app.label.makeSearchReady()
+            val label = app.label.removeSpaces()
             val length = label.length
             if (length > 3 && search.length < 5) {
                 val needed = length / 2

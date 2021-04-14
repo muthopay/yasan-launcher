@@ -23,6 +23,9 @@ private val MAIN_HANDLER by lazy(LazyThreadSafetyMode.NONE) {
     Handler(Looper.getMainLooper())
 }
 
+/**
+ * A modified version of [AndroidDrawablePainter] to fix the scaling issue.
+ */
 class AndroidDrawablePainterAlt(
     private val drawable: Drawable
 ) : Painter() {
