@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import yasan.space.mnml.ai.launcher.MainActivity
+import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.data.app.App
 import yasan.space.mnml.ai.launcher.ui.app.AppHome
 
@@ -24,10 +26,10 @@ fun AppBox(apps: State<List<App>?>, activity: MainActivity) {
 
     when {
         list == null -> {
-            Text(text = "Loading apps")
+            Text(text = stringResource(R.string.apps_loading))
         }
         list.isEmpty() -> {
-            Text(text = "No apps found")
+            Text(text = stringResource(R.string.apps_none_found))
         }
         else -> {
             LazyVerticalGrid(
