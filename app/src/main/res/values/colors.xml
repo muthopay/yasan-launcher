@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+
+    // Not Dark Light Sensitive
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="yasan_blue_light">#FF5bdfe6</color>
+    <color name="yasan_blue">#FF00ADB4</color>
+    <color name="yasan_blue_dark">#007d84</color>
+    <color name="yasan_orange_light">#ff8951</color>
+    <color name="yasan_orange">#FF5623</color>
+    <color name="yasan_orange_dark">#c41b00</color>
+
+    <color name="divider">@color/layer_background</color>
+
+    // Dark Light Sensitive
+
+    <color name="layer_foreground">#fff</color>
+    <color name="layer_midground">#EEEEEE</color>
+    <color name="layer_background">#D8D8D8</color>
+
+    <color name="text_title">#212121</color>
+    <color name="text_desc">#666666</color>
+
 </resources>
