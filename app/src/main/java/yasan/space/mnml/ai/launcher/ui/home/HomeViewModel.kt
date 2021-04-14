@@ -26,6 +26,14 @@ class HomeViewModel @Inject constructor(
     private var _homeApps = MutableLiveData<List<App>>()
     val homeApps: LiveData<List<App>> get() = _homeApps
 
+    private var _buttons = MutableLiveData(false)
+    val buttons: LiveData<Boolean> get() = _buttons
+
+    fun toggleButtons() {
+        val visibility = _buttons.value == false
+        _buttons.postValue(visibility)
+    }
+
     fun loadHomeApps(apps: List<App>?) = when {
         apps == null -> {
         }

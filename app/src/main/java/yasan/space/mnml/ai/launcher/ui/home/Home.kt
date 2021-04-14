@@ -1,7 +1,10 @@
 package yasan.space.mnml.ai.launcher.ui.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -16,6 +19,7 @@ import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.data.app.App
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 
+@ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
 fun Home(apps: State<List<App>?>, activity: MainActivity) {
@@ -25,15 +29,22 @@ fun Home(apps: State<List<App>?>, activity: MainActivity) {
     viewModel.loadHomeApps(apps.value)
 
     val homeApps = viewModel.homeApps.observeAsState()
+    val buttonsVisible = viewModel.buttons.observeAsState()
 
     Box(
-        modifier = Modifier.background(colorResource(id = R.color.default_home_background)),
+        modifier = Modifier
+            .background(colorResource(id = R.color.default_home_background))
+            .clickable {
+                viewModel.toggleButtons()
+            },
         contentAlignment = Alignment.Center
     ) {
         Column(modifier = Modifier.width(200.dp)) {
             AppBox(homeApps, activity)
-            Spacer(modifier = Modifier.height(grid))
-            ButtonsBox(activity)
+            Spacer(modifier = Modifier.requiredHeight(grid))
+            AnimatedVisibility(visible = buttonsVisible.value != false) {
+                ButtonsBox(activity)
+            }
         }
     }
 }
