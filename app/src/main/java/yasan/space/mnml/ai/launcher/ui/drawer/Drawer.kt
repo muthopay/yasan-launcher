@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
@@ -42,9 +43,11 @@ fun Drawer(
     val list = allApps.value ?: ArrayList()
 
     Column() {
-        LazyColumn(state = listState,
+        LazyColumn(
+            state = listState,
             modifier = Modifier
-                .weight(1f)) {
+                .weight(1f)
+        ) {
             itemsIndexed(list) { index, app ->
                 AppDrawer(app = app, activity = activity)
             }
@@ -61,6 +64,7 @@ fun AppDrawer(
     app: App,
     activity: MainActivity
 ) {
+    val paddingSize = grid(1.5f)
     val drawable = app.requireIcon(activity)!!
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(modifier = Modifier
@@ -73,11 +77,17 @@ fun AppDrawer(
                 contentDescription = app.label,
                 modifier = Modifier
                     .requiredSize(appHomeSize)
-                    .padding(grid(1.5f)),
+                    .padding(paddingSize),
                 alignment = Alignment.Center,
                 contentScale = ContentScale.Fit
             )
-            Text(text = app.label)
+            Text(
+                text = app.label,
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f)
+                    .padding(0.dp, paddingSize, paddingSize, paddingSize)
+            )
         }
         Divider(color = colorResource(id = R.color.divider))
     }
