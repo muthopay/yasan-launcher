@@ -19,8 +19,8 @@ class MainViewModel @Inject constructor(
     private val appRepository: AppRepository
 ) : AndroidViewModel(application) {
 
-    private var _apps = MutableLiveData<List<App>>()
-    val apps: LiveData<List<App>> get() = _apps
+    private var _apps = MutableLiveData<ArrayList<App>>()
+    val apps: LiveData<ArrayList<App>> get() = _apps
 
     fun updateApps() {
         viewModelScope.launch(dispatchers.io) {
