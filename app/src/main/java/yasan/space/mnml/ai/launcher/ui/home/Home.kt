@@ -7,13 +7,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
@@ -25,7 +24,8 @@ import yasan.space.mnml.ai.launcher.ui.theme.grid
 fun Home(
     mainViewModel: MainViewModel,
     activity: MainActivity,
-    viewModel: HomeViewModel
+    viewModel: HomeViewModel,
+    navController: NavHostController
 ) {
 
     val allApps = mainViewModel.apps.observeAsState()
@@ -46,7 +46,7 @@ fun Home(
             AppBox(homeApps, activity)
             Spacer(modifier = Modifier.requiredHeight(grid))
             AnimatedVisibility(visible = buttonsVisible.value != false) {
-                ButtonsBox(activity)
+                ButtonsBox(activity, navController)
             }
         }
     }

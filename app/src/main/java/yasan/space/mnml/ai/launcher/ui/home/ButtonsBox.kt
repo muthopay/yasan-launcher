@@ -16,7 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
 import yasan.space.mnml.ai.launcher.MainActivity
+import yasan.space.mnml.ai.launcher.MainDestinations
 import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.ui.theme.MyAppIcons
 import yasan.space.mnml.ai.launcher.ui.theme.divider
@@ -27,7 +30,7 @@ private const val TAG = "ButtonsBox"
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
-fun ButtonsBox(activity: MainActivity?) {
+fun ButtonsBox(activity: MainActivity?, navController: NavHostController) {
 
     Box(
         modifier = Modifier
@@ -43,7 +46,7 @@ fun ButtonsBox(activity: MainActivity?) {
                 modifier = Modifier
                     .weight(1f)
                     .clickable {
-                        Log.d(TAG, "ButtonsBox: Dashboard")
+                        navController.navigate(MainDestinations.DASHBOARD_ROUTE)
                     }
                     .padding(grid(1.5f))
             )
@@ -54,7 +57,7 @@ fun ButtonsBox(activity: MainActivity?) {
                 modifier = Modifier
                     .weight(1f)
                     .clickable {
-                        Log.d(TAG, "ButtonsBox: Search")
+                        navController.navigate(MainDestinations.SEARCH_ROUTE)
                     }
                     .padding(grid(1.5f))
             )
@@ -65,7 +68,7 @@ fun ButtonsBox(activity: MainActivity?) {
                 modifier = Modifier
                     .weight(1f)
                     .clickable {
-                        Log.d(TAG, "ButtonsBox: Apps")
+                        navController.navigate(MainDestinations.DRAWER_ROUTE)
                     }
                     .padding(grid(1.5f))
             )
@@ -73,12 +76,4 @@ fun ButtonsBox(activity: MainActivity?) {
 
     }
 
-}
-
-@ExperimentalAnimationApi
-@ExperimentalFoundationApi
-@Preview
-@Composable
-fun ButtonsBoxPreview() {
-    ButtonsBox(activity = null)
 }
