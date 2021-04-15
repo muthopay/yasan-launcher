@@ -63,7 +63,11 @@ class MainActivity : ComponentActivity() {
                 )
             }
             composable(MainDestinations.DRAWER_ROUTE) {
-                Drawer()
+                Drawer(
+                    mainViewModel = viewModel,
+                    activity = this@MainActivity,
+                    navController = navController
+                )
             }
             composable(MainDestinations.SEARCH_ROUTE) {
                 Search()
