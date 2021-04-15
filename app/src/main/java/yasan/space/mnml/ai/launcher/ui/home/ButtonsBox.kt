@@ -1,6 +1,5 @@
 package yasan.space.mnml.ai.launcher.ui.home
 
-import android.util.Log
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -9,13 +8,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.outlined.Apps
-import androidx.compose.material.icons.outlined.Dashboard
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import yasan.space.mnml.ai.launcher.MainActivity
@@ -39,17 +36,6 @@ fun ButtonsBox(activity: MainActivity?, navController: NavHostController) {
             .fillMaxWidth()
     ) {
         Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-            Icon(
-                MyAppIcons.Dashboard,
-                contentDescription = stringResource(R.string.home),
-                tint = colorResource(id = R.color.text_desc),
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable {
-                        navController.navigate(MainDestinations.DASHBOARD_ROUTE)
-                    }
-                    .padding(grid(1.5f))
-            )
             Icon(
                 MyAppIcons.Search,
                 contentDescription = stringResource(R.string.home),

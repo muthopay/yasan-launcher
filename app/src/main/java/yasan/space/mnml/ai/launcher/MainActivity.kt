@@ -14,11 +14,11 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
 import yasan.space.mnml.ai.launcher.ui.YasanLauncher
-import yasan.space.mnml.ai.launcher.ui.dashboard.Dashboard
 import yasan.space.mnml.ai.launcher.ui.drawer.Drawer
 import yasan.space.mnml.ai.launcher.ui.home.Home
 import yasan.space.mnml.ai.launcher.ui.home.HomeViewModel
 import yasan.space.mnml.ai.launcher.ui.search.Search
+import yasan.space.mnml.ai.launcher.ui.settings.SettingsScreen
 
 private const val TAG = "MainActivity"
 
@@ -72,8 +72,8 @@ class MainActivity : ComponentActivity() {
             composable(MainDestinations.SEARCH_ROUTE) {
                 Search()
             }
-            composable(MainDestinations.DASHBOARD_ROUTE) {
-                Dashboard()
+            composable(MainDestinations.SETTINGS_ROUTE) {
+                SettingsScreen()
             }
         }
 
@@ -85,7 +85,7 @@ object MainDestinations {
     const val HOME_ROUTE = "home"
     const val SEARCH_ROUTE = "search"
     const val DRAWER_ROUTE = "drawer"
-    const val DASHBOARD_ROUTE = "dashboard"
+    const val SETTINGS_ROUTE = "settings"
 }
 
 

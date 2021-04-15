@@ -7,14 +7,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -22,7 +20,8 @@ import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.data.app.App
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
-import yasan.space.mnml.ai.launcher.ui.common.YasanTitleBar
+import yasan.space.mnml.ai.launcher.ui.common.YasanDivider
+import yasan.space.mnml.ai.launcher.ui.common.YasanTitleBarHome
 import yasan.space.mnml.ai.launcher.ui.theme.appHomeSize
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 import yasan.space.mnml.ai.launcher.util.AndroidDrawablePainterAlt
@@ -52,7 +51,7 @@ fun Drawer(
                 AppDrawer(app = app, activity = activity)
             }
         }
-        YasanTitleBar(title = stringResource(id = R.string.drawer), navController)
+        YasanTitleBarHome(title = stringResource(id = R.string.drawer), navController)
     }
 
 
@@ -89,6 +88,6 @@ fun AppDrawer(
                     .padding(0.dp, paddingSize, paddingSize, paddingSize)
             )
         }
-        Divider(color = colorResource(id = R.color.divider))
+        YasanDivider()
     }
 }

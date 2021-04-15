@@ -1,4 +1,4 @@
-package yasan.space.mnml.ai.launcher.ui.dashboard
+package yasan.space.mnml.ai.launcher.ui.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun Dashboard() {
+fun SettingsScreen() {
     Box(modifier = Modifier.fillMaxSize().background(Color.Green)) {
-        Text(text = "Dashboard")
+        Text(text = "Settings")
     }
 }
