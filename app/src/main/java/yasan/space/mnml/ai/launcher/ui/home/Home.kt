@@ -16,20 +16,23 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
-import yasan.space.mnml.ai.launcher.data.app.App
+import yasan.space.mnml.ai.launcher.ui.MainViewModel
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
-fun Home(apps: State<List<App>?>, activity: MainActivity) {
+fun Home(
+    mainViewModel: MainViewModel,
+    activity: MainActivity,
+    viewModel: HomeViewModel
+) {
 
-    val viewModel: HomeViewModel = viewModel()
-
-    viewModel.loadHomeApps(apps.value)
-
+    val allApps = mainViewModel.apps.observeAsState()
     val homeApps = viewModel.homeApps.observeAsState()
     val buttonsVisible = viewModel.buttons.observeAsState()
+
+    viewModel.loadHomeApps(allApps.value)
 
     Box(
         modifier = Modifier

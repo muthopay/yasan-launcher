@@ -6,9 +6,27 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.getBackStackEntry
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.internal.lifecycle.HiltViewModelFactory
+import yasan.space.mnml.ai.launcher.data.app.AppRepository
+import yasan.space.mnml.ai.launcher.data.app.DefaultAppRepository
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
 import yasan.space.mnml.ai.launcher.ui.YasanLauncher
+import yasan.space.mnml.ai.launcher.ui.dashboard.Dashboard
+import yasan.space.mnml.ai.launcher.ui.drawer.Drawer
+import yasan.space.mnml.ai.launcher.ui.home.Home
+import yasan.space.mnml.ai.launcher.ui.home.HomeViewModel
 
 private const val TAG = "MainActivity"
 
@@ -23,7 +41,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            YasanLauncher(viewModel, this)
+            YasanLauncher(this)
         }
 
     }
@@ -34,9 +52,40 @@ class MainActivity : ComponentActivity() {
         viewModel.updateApps()
     }
 
+    @ExperimentalFoundationApi
+    @ExperimentalAnimationApi
+    @Composable
+    fun NavGraph(startDestination: String = MainDestinations.HOME_ROUTE) {
+        val navController = rememberNavController()
+
+        NavHost(navController = navController, startDestination = startDestination) {
+            composable(MainDestinations.HOME_ROUTE) { backStackEntry ->
+                val homeViewModel =
+                    navController.hiltNavGraphViewModel<HomeViewModel>(MainDestinations.HOME_ROUTE)
+
+                Home(
+                    mainViewModel = viewModel,
+                    viewModel = homeViewModel,
+                    activity = this@MainActivity
+                )
+            }
+            composable(MainDestinations.DRAWER_ROUTE) {
+                Drawer()
+            }
+            composable(MainDestinations.DASHBOARD_ROUTE) {
+                Dashboard()
+            }
+        }
+
+    }
+
 }
 
-
+object MainDestinations {
+    const val HOME_ROUTE = "home"
+    const val DRAWER_ROUTE = "drawer"
+    const val DASHBOARD_ROUTE = "dashboard"
+}
 
 
 
