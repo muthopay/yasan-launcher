@@ -1,5 +1,6 @@
 package yasan.space.mnml.ai.launcher.ui.app
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import yasan.space.mnml.ai.launcher.ui.theme.appHomeSize
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 import yasan.space.mnml.ai.launcher.util.AndroidDrawablePainterAlt
 
+@ExperimentalAnimationApi
 @Composable
 fun AppHome(
     app: App,

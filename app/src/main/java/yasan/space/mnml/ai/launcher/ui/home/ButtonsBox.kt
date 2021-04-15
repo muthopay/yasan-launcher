@@ -1,6 +1,7 @@
 package yasan.space.mnml.ai.launcher.ui.home
 
 import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,6 +24,7 @@ import yasan.space.mnml.ai.launcher.ui.theme.grid
 
 private const val TAG = "ButtonsBox"
 
+@ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
 fun ButtonsBox(activity: MainActivity?) {
@@ -73,6 +75,7 @@ fun ButtonsBox(activity: MainActivity?) {
 
 }
 
+@ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Preview
 @Composable

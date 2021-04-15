@@ -1,5 +1,6 @@
 package yasan.space.mnml.ai.launcher.ui.home
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,6 +24,7 @@ import yasan.space.mnml.ai.launcher.ui.theme.appBoxSize
 import yasan.space.mnml.ai.launcher.ui.theme.divider
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 
+@ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
 fun AppBox(apps: State<List<App>?>, activity: MainActivity) {

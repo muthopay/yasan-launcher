@@ -1,5 +1,6 @@
 package yasan.space.mnml.ai.launcher.ui
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
@@ -11,6 +12,7 @@ import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.ui.home.Home
 import yasan.space.mnml.ai.launcher.ui.theme.YASANLauncherTheme
 
+@ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
 fun YasanLauncher(viewModel: MainViewModel, activity: MainActivity) {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import dagger.hilt.android.AndroidEntryPoint
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
@@ -11,6 +12,7 @@ import yasan.space.mnml.ai.launcher.ui.YasanLauncher
 
 private const val TAG = "MainActivity"
 
+@ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
