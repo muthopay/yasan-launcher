@@ -7,22 +7,25 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.navigation.compose.rememberNavController
 import yasan.space.mnml.ai.launcher.MainActivity
-import yasan.space.mnml.ai.launcher.ui.home.Home
+import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.ui.theme.YASANLauncherTheme
 
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @Composable
-fun YasanLauncher(viewModel: MainViewModel, activity: MainActivity) {
-
-    val apps = viewModel.apps.observeAsState()
+fun YasanLauncher(activity: MainActivity) {
 
     YASANLauncherTheme {
-        Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
-            Home(apps, activity)
+        Surface(
+            color = colorResource(id = R.color.layer_midground),
+            modifier = Modifier.fillMaxSize()
+        ) {
+            activity.NavGraph()
         }
+
     }
 
 }
