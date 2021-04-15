@@ -15,11 +15,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import yasan.space.mnml.ai.launcher.MainActivity
 import yasan.space.mnml.ai.launcher.R
 import yasan.space.mnml.ai.launcher.data.app.App
 import yasan.space.mnml.ai.launcher.ui.MainViewModel
+import yasan.space.mnml.ai.launcher.ui.common.YasanTitleBar
 import yasan.space.mnml.ai.launcher.ui.theme.appHomeSize
 import yasan.space.mnml.ai.launcher.ui.theme.grid
 import yasan.space.mnml.ai.launcher.util.AndroidDrawablePainterAlt
@@ -39,11 +41,17 @@ fun Drawer(
 
     val list = allApps.value ?: ArrayList()
 
-    LazyColumn(state = listState) {
-        itemsIndexed(list) { index, app ->
-            AppDrawer(app = app, activity = activity)
+    Column() {
+        LazyColumn(state = listState,
+            modifier = Modifier
+                .weight(1f)) {
+            itemsIndexed(list) { index, app ->
+                AppDrawer(app = app, activity = activity)
+            }
         }
+        YasanTitleBar(title = stringResource(id = R.string.drawer), navController)
     }
+
 
 }
 
